@@ -1,0 +1,9 @@
+{
+  "name": "Claude HQ",
+  "short_name": "Claude HQ",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#05060f",
+  "theme_color": "#06070f",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

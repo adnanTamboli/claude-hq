@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claude HQ</title>
+<meta name="theme-color" content="#1d1d1d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+
+<!-- F3-style debug HUD -->
+<div id="f3"></div>
+<div id="corner">
+  <button id="btnQuests" class="mcbtn" title="Quest log (Q)">QUESTS <em id="questCount">0</em></button>
+  <button id="btnCmd" class="mcbtn" title="Command (/ or Ctrl+K)">/TP</button>
+  <button id="btnTime" class="mcbtn" title="Day / night">☀</button>
+  <button id="btnSound" class="mcbtn" title="Sound">♪</button>
+  <span id="live" class="live" title="Live: updates as Claude works">● LIVE</span>
+</div>
+
+<!-- chat = live activity -->
+<div id="chat"></div>
+
+<div id="actionbar"></div>
+<div id="controlsHint">WASD walk · SHIFT run · SPACE jump · E interact · Q quests · / teleport</div>
+
+<!-- hotbar + xp -->
+<div id="hud">
+  <div id="xp"><div id="xpFill"></div><span id="xpLvl">0</span></div>
+  <div id="hotbar"></div>
+</div>
+
+<aside id="quests" class="drawer left mc">
+  <div class="dhead"><h2>QUEST LOG</h2><button class="x" data-close="quests">✕</button></div>
+  <p id="questSub" class="sub"></p>
+  <div id="questList" class="scroll"></div>
+  <div class="brief">
+    <button id="btnBrief" class="mcbtn wide">✦ ASK CLAUDE FOR TODAY'S PLAN</button>
+    <div id="briefOut"></div>
+  </div>
+</aside>
+
+<aside id="plot" class="drawer right mc">
+  <button class="x" data-close="plot">✕</button>
+  <div id="plotBody" class="scroll"></div>
+</aside>
+
+<div id="tooltip"></div>
+<div id="toasts"></div>
+
+<div id="cmd" class="hidden">
+  <div id="cmdList"></div>
+  <div class="cmdrow"><span>/tp</span><input id="cmdInput" placeholder="project or agent…" autocomplete="off" spellcheck="false"></div>
+</div>
+
+<div id="title">
+  <canvas id="clawdArt" width="18" height="5"></canvas>
+  <div class="logo-wrap">
+    <h1 class="logo">CLAUDE HQ</h1>
+    <div id="splash"></div>
+  </div>
+  <div class="menu">
+    <button id="enter" class="mcbtn big">ENTER WORLD</button>
+    <button id="enterQuests" class="mcbtn big">QUEST LOG</button>
+  </div>
+  <div class="title-foot"><span id="titleInfo"></span><span>Claude HQ 1.0 · your agents, live</span></div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
